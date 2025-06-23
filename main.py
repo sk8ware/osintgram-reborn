@@ -3,7 +3,7 @@ from modules.followers import get_followers
 from modules.profile_pic import download_profile_pic
 from modules.posts import download_posts
 from modules.stories import download_stories
-from modules.hashtags import extract_bio_hashtags
+from modules.analyze_with_ia import chat_with_openai
 from modules.export import export_data
 from utils.banner import print_banner
 from rich.console import Console
@@ -43,8 +43,8 @@ def main() -> None:
             console.print("[cyan][3][/cyan] Descargar foto de perfil en HD")
             console.print("[cyan][4][/cyan] Descargar publicaciones y metadatos")
             console.print("[cyan][5][/cyan] Descargar stories disponibles")
-            console.print("[cyan][6][/cyan] Extraer hashtags de la biografía")
-            console.print("[cyan][7][/cyan] Exportar resultados a TXT/JSON")
+            console.print("[cyan][6][/cyan] Consultar perfil con IA (OpenAI)")
+            console.print("[cyan][7][/cyan] Exportar resultados del perfil e IA a TXT/JSON")
             console.print("[cyan][0][/cyan] Salir")
             console.print("\n[bold cyan]Opción > [/bold cyan]", end="")
             option = input().strip()
@@ -88,12 +88,39 @@ def main() -> None:
                 download_stories(username)
 
             elif option == "6":
-                console.print("\n[bold yellow]⚙️ Extrayendo hashtags...[/bold yellow]")
-                extract_bio_hashtags(username)
+                console.print("\n[bold yellow]🤖 Analizando con IA...[/bold yellow]")
+                chat_with_openai(username)
 
             elif option == "7":
-                console.print("\n[bold yellow]⚙️ Exportando datos...[/bold yellow]")
-                export_data(username)
+                console.print("\n[bold cyan]¿En qué formato deseas exportar los datos? (txt/json):[/] ", end="")
+                export_format = input().strip().lower()
+                if export_format not in ["txt", "json"]:
+                    console.print("[red]⚠️  Formato inválido. Usa 'txt' o 'json'.[/red]")
+                    continue
+
+                profile_data = get_profile_info(username)
+                try:
+                    with open(f"outputs/ai_summary_{username}.txt", "r", encoding="utf-8") as f:
+                        ai_analysis = f.read()
+                except:
+                    ai_analysis = "No se encontró análisis de IA previo."
+
+                if export_format == "json":
+                    export_payload = {
+                        "profile_data": profile_data,
+                        "ai_analysis": ai_analysis
+                    }
+                else:
+                    export_payload = {
+                        "Perfil": profile_data,
+                        "Resumen IA": ai_analysis
+                    }
+
+                result = export_data(username, export_payload, export_format)
+                if "success" in result:
+                    console.print(f"\n[green]✅ Datos exportados correctamente a [bold]{result['file']}[/bold][/green]")
+                else:
+                    console.print(f"[red]{result['error']}[/red]")
 
             horizontal_rule()
 
@@ -104,7 +131,7 @@ def main() -> None:
             Panel(
                 "Hack the world 🧠💀",
                 title="👋 Hasta pronto",
-                subtitle="Osintgram-Reborn",
+                subtitle="Osintgram",
                 style="bold purple",
             )
         )

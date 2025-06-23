@@ -1,43 +1,54 @@
-import instaloader
-from dotenv import load_dotenv
 import os
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from time import sleep
+from dotenv import load_dotenv
 
-# Cargar variables de entorno
 load_dotenv()
 
 def download_stories(username: str) -> dict:
     try:
-        L = instaloader.Instaloader(
-            download_video_thumbnails=False,
-            dirname_pattern=f"downloads/{username}_stories"
-        )
+        # Ruta de la extensión
+        extension_path = os.path.abspath("downloads/Instagram-Downloader-5.1.9")
 
-        # Login con credenciales desde .env
-        L.login(os.getenv("IG_USERNAME"), os.getenv("IG_PASSWORD"))
+        # Configuración de opciones de Chrome
+        chrome_options = Options()
+        chrome_options.add_argument(f"--load-extension={extension_path}")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
 
-        profile = instaloader.Profile.from_username(L.context, username)
-        stories = L.get_stories(userids=[profile.userid])
+        # Usar Chromium directamente si estás en Linux y no tienes google-chrome
+        chrome_options.binary_location = "/usr/bin/chromium"
 
-        count = 0
-        for story in stories:
-            for item in story.get_items():
-                L.download_storyitem(item, f"{username}_stories")
-                count += 1
+        # Iniciar el navegador
+        driver = webdriver.Chrome(options=chrome_options)
 
-        if count == 0:
-            return {
-                "success": False,
-                "message": "⚠️ No hay stories disponibles."
-            }
+        # Abrir la página de login
+        driver.get("https://www.instagram.com/accounts/login/")
+        sleep(4)
+
+        # Login
+        username_input = driver.find_element(By.NAME, "username")
+        password_input = driver.find_element(By.NAME, "password")
+
+        username_input.send_keys(os.getenv("IG_USERNAME"))
+        password_input.send_keys(os.getenv("IG_PASSWORD"))
+        password_input.submit()
+
+        sleep(6)  # Espera a que cargue la sesión
+
+        # Ir directo a las stories del usuario
+        driver.get(f"https://www.instagram.com/stories/{username}/")
+        sleep(15)
 
         return {
             "success": True,
-            "count": count,
-            "path": f"downloads/{username}_stories/"
+            "message": "✅ Navegador abierto y extensión cargada. Descarga las stories manualmente si deseas."
         }
 
     except Exception as e:
         return {
-            "error": f"❌ Error al descargar stories: {str(e)}"
+            "error": f"❌ Error en el proceso: {str(e)}"
         }
 
