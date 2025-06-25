@@ -7,10 +7,6 @@ venv/
 __pycache__/
 *.pyc
 
-# Archivos generados
-outputs/
-downloads/
-
 # Otros
 *.log
 .DS_Store
