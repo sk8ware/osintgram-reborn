@@ -1,13 +1,27 @@
-Basándome en el nombre de usuario 'tati.samin', a nivel de Open Source Intelligence (OSINT), podríamos inferir algunos aspectos sobre la persona detrás de ese perfil de Instagram. 
+**Informe Técnico de Análisis OSINT**
 
-1. **Nombre:** Es probable que el nombre de la persona sea Tati, basado en el nombre de usuario.
-   
-2. **Posible apellido:** 'Samin' podría ser parte del apellido de la persona o un seudónimo que utiliza en línea.
+**1. Perfil de usuario y exposición pública**
 
-3. **Intereses:** Considerando las tendencias comunes en perfiles de Instagram, podríamos esperar ver contenido relacionado con moda, belleza, viajes, comida, deportes u otros hobbies que puedan ser de interés para Tati.
+El usuario de Instagram en cuestión es @tati.samin, cuyo nombre completo es Tatiana Pupiales. La biografía del usuario indica que se encuentra en UIO (probablemente Quito, Ecuador, dado el código del aeropuerto UIO) y proporciona una cita que refleja una actitud de no preocuparse por las cosas que están fuera de su control. El perfil tiene 395 seguidores y sigue a 453 personas. Importante destacar que el perfil no es privado, lo que significa que cualquier persona, incluso aquellos que no siguen a Tatiana, puede ver su contenido.
 
-4. **Estilo de vida:** A través de sus publicaciones, podríamos inferir aspectos de su estilo de vida, como si le gusta viajar, practicar deportes, asistir a eventos culturales, entre otros.
+**2. Posibles intereses o comportamientos inferidos**
 
-5. **Redes sociales:** Es posible que la persona sea activa en redes sociales y comparta contenido de su vida diaria, eventos importantes, momentos especiales, etc.
+Basándonos únicamente en la información proporcionada, es difícil inferir los intereses o comportamientos específicos de Tatiana. Sin embargo, su cita en la biografía podría indicar una actitud relajada o despreocupada hacia la vida. Además, el hecho de que siga a más personas de las que la siguen podría sugerir que está interesada en una variedad de contenidos y que utiliza Instagram para mantenerse al día con estos intereses.
 
-En general, el análisis OSINT nos permite obtener información sobre una persona a partir de fuentes abiertas disponibles en Internet, como perfiles de redes sociales, sitios web, noticias, entre otros. Sin embargo, para obtener una imagen más precisa y detallada de la persona detrás de 'tati.samin', sería necesario revisar directamente su perfil de Instagram.
+**3. Nivel de privacidad y visibilidad de datos sensibles**
+
+El perfil de Tatiana no es privado, lo que significa que su contenido es accesible a cualquier usuario de Instagram. Esto incluye fotos, videos, historias y cualquier otra información que pueda haber compartido en su perfil. Aunque no se proporciona información detallada sobre el contenido de su perfil, el hecho de que no sea privado sugiere un nivel de privacidad relativamente bajo. No se mencionan datos sensibles específicos en la información proporcionada.
+
+**4. Nivel de riesgo digital (0 a 100)**
+
+Basándonos en la información proporcionada, el nivel de riesgo digital de Tatiana sería de 60. Este nivel se deriva del hecho de que su perfil es público, lo que potencialmente permite a los actores malintencionados o a los intrusos acceder a su información y contenido. No obstante, este nivel de riesgo es una estimación y podría variar dependiendo del contenido específico que Tatiana haya compartido en su perfil.
+
+**5. Recomendaciones para mejorar la seguridad del perfil**
+
+Para mejorar la seguridad de su perfil, Tatiana podría considerar las siguientes acciones:
+
+- Cambiar su perfil a privado. Esto limitará el acceso a su contenido solo a las personas que ella apruebe.
+- Evitar compartir información personal sensible, como su ubicación exacta, detalles de trabajo o escuela, y otra información que podría ser utilizada por actores malintencionados.
+- Revisar y limpiar su lista de seguidores para asegurarse de que solo las personas que conoce y en las que confía tengan acceso a su contenido.
+- Utilizar una autenticación de dos factores para proteger su cuenta de accesos no autorizados.
+- Ser consciente de las estafas y los ataques de phishing que pueden presentarse a través de mensajes directos o comentarios en sus publicaciones.

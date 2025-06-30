@@ -9,6 +9,7 @@ from utils.banner import print_banner
 from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
+import os
 
 console = Console()
 
@@ -88,7 +89,6 @@ def main() -> None:
                 download_stories(username)
 
             elif option == "6":
-                console.print("\n[bold yellow]🤖 Analizando con IA...[/bold yellow]")
                 chat_with_openai(username)
 
             elif option == "7":
@@ -105,16 +105,10 @@ def main() -> None:
                 except:
                     ai_analysis = "No se encontró análisis de IA previo."
 
-                if export_format == "json":
-                    export_payload = {
-                        "profile_data": profile_data,
-                        "ai_analysis": ai_analysis
-                    }
-                else:
-                    export_payload = {
-                        "Perfil": profile_data,
-                        "Resumen IA": ai_analysis
-                    }
+                export_payload = {
+                    "profile_data" if export_format == "json" else "Perfil": profile_data,
+                    "ai_analysis" if export_format == "json" else "Resumen IA": ai_analysis
+                }
 
                 result = export_data(username, export_payload, export_format)
                 if "success" in result:

@@ -1,13 +1,19 @@
-cat <<EOF > .gitignore
-# Entornos virtuales
+# Entorno virtual
 venv/
-.env
 
-# Compilados de Python
+# Archivos Python compilados
 __pycache__/
 *.pyc
 
-# Otros
+# Archivos temporales del sistema
 *.log
 .DS_Store
-EOF
+
+# Archivos de configuración local
+.env
+
+# Salidas generadas por el script
+outputs/
+
+# Puedes subir downloads si quieres
+# downloads/  ← lo quitamos del ignore para que SÍ se suba
